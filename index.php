@@ -14,7 +14,7 @@
     <script>
         var botmanWidget = {
             frameEndpoint: 'http://localhost/Bootman/chat.html',
-            introMessage: 'Hola, mi nombre es Ixchel. ¿En que puedo ayudarte?',
+            introMessage: 'Hola, mi nombre es Ixchel 😀. ¿En que puedo ayudarte?',
             chatServer : 'chat.php', 
             title: 'GuiaBot', 
             mainColor: '#ff76f4',
