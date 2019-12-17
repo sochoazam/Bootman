@@ -100,7 +100,17 @@ $contI = 0;
 
 
 
- 
+//Telefono de contacto8
+$botman->hears('.*(n|N)(u|ú)mero.*|.*(t|T)el(é|e)fono.*', function (BotMan $bot) {
+    $bot->reply('Puedes comunicarte al número 3333333333 😊');
+    
+});
+
+//Cantidad de departamentos
+$botman->hears('.*(c|C)u(a|á)ntos (departamentos|depas|deptos).*|.*(c|C)antidad de (departamentos|depas|deptos).*', function (BotMan $bot) {
+    $bot->reply('142 Departamentos en 2 torres con  2 elevadores por torre 🏢.');
+});
+
 //Mas ayuda
  $botman->hears('gracias', function (BotMan $bot) {
     $bot->typesAndWaits(5);
@@ -121,20 +131,20 @@ function responseb(BotMan $bot){
 }
 
 //Amenidades
-$botman->hears('.*amenidades.*|.*Amenidades.*', function ( BotMan $bot) { 
+$botman->hears('.*(a|A)menidades.*', function ( BotMan $bot) { 
     $bot->reply('Nuestras amenidades son las siguientes:
                 <br>
                 🍃 Roof Garden con vista panorámica.
                 <br>
                 🏋‍♀ Área de Fitness Room
                 <br>
-                🏊‍♂ Alberca, Jacuzzi, Chapoteadero.
+                🏊‍♂ Alberca/Chapoteadero.
                 <br>
                 🏢 2 elevadores por torre.
                 <br>
-                👨‍✈ Seguridad.
+                👨‍✈ Ingreso controlado y seguridad 24 horas.
                 <br>
-                🏬 Está ubicado al lado de una plaza comercial.'); 
+                🏬 Centro Comercial.'); 
 });
 
 
@@ -174,7 +184,7 @@ $botman->hears('.*enganche.*', function (BotMan $bot) {
 
 //Entrega
 $botman->hears('.*cuando entregan*|.*tiempo estimado de entrega.*|.*cuando entregarian.*|.*me dan el departamento.*|.*entrega.*', function (BotMan $bot) {
-    $bot->reply('🚧 Las fechas de entrega son las siguientes: 
+    $bot->reply('🚧 Las fechas de entrega aproximadas son las siguientes: 
       <br>
       La primera torre en el cuarto trimestre del 2020.
       <br>
@@ -189,7 +199,7 @@ $botman->hears('Es todo, hasta luego|Es todo, muchas gracias|Es todo|Adios|Hasta
 });
 
 //Horario
-$botman->hears('.*horario de atencion.*|.*horario puedo recibir atencion.*|.*horario pueden atencerme.*|.*horario.*', function (BotMan $bot) {
+$botman->hears('.*(h|H)orario.*|.*(h|H)ora.*|.*(a|A)pertura.*|.*(C|c)ierre.*|.*(c|C)ierra.*|.*(a|A)bre.*|.*(i|I)nicia.*|.*(c|C)omieza.*|.*(t|T)ermina.*|.*(E|e)mpieza.*', function (BotMan $bot) {
     $bot->reply('El horario de atención es: 10:00 am - 19:00 pm en horario corrido de Lunes a Domingo 🙋‍♀.');
 });
 
@@ -225,7 +235,7 @@ $botman->hears('.*seguridad.*', function (BotMan $bot) {
 });
 
 //Tamaño
-$botman->hears('.*modelos.*|.*tipos de departamento.*|.*dimension.*|.*tamaño.*|.*medida.*|.*cuanto miden.*|.*departamentos.*|informacion (sobre|de) departamentos', function (BotMan $bot) {
+$botman->hears('.*(M|m)odelos.*|.*(D|d)imensi(o|ó)n.*|.*(T|t)amaño.*|.*(m|M)edida.*|.*miden.*|informaci(o|ó)n (sobre|de) departamento.*|.*superficie.*|.*metros.*|.*mts.*|.*m2.*|.*magnitud.*|.*espacio.*|.*(p|P)rototipo.*', function (BotMan $bot) {
     $bot->reply('Tenemos departamentos desde 64 m2 hasta 92 m2 😉 y las características son:
       <br>
       2 y 3 recamaras con 2 baños.
@@ -249,6 +259,8 @@ $botman->hears('.*modelos.*|.*tipos de departamento.*|.*dimension.*|.*tamaño.*|
       <a href="https://grupoguia.mx/lomasur/#link-kvqs5v448xr" target="_blank">Da clic aquí para conocer todos nuestros modelos</a>');
 });
 
+
+
 //Ubicacion
 $botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*localizados.*|(E|e)n donde estan.*|.*ubicados.*|.*ubican.*', function (BotMan $bot) {
     $bot->reply('Estamos ubicados en: Av. Colon  #4965, frente a la terminal de la linea 1 sur del tren ligero 🚟. A 900 mts del ITESO.
@@ -259,7 +271,7 @@ $botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*lo
 });
 
 //Seguimiento para contacto
-$botman->hears('(C|c)omo puedo comunicarme con ustedes.*|(Q|q)uiero agendar una cita|^como (puedo obtener|obtengo) mas informacion$', function(BotMan $bot) {
+$botman->hears('(C|c)omo puedo comunicarme con ustedes.*|(Q|q)uiero agendar una cita|^como (puedo obtener|obtengo) mas informacion$|^(M|m)e (puedes|podrias) (mandar|mandarme) (informes|informaci(o|ó)n)$|.*cotizacion.*|.*cita.*', function(BotMan $bot) {
     
     
     $bot->reply('¿Deseas que uno de nuestros asesores se comunique contigo? 😁?');
@@ -267,11 +279,16 @@ $botman->hears('(C|c)omo puedo comunicarme con ustedes.*|(Q|q)uiero agendar una 
 });
 
 $botman->hears('(s|S)(í|i)', function(BotMan $bot){
-      $bot->reply('¡Muy bien!, ¿Cuál es tu nombre 😁?');
+      $bot->reply('¡Muy bien!, ¿Puedes enviarme por favor tu Nombre, Número y Correo de contacto 😁?');
 });
 
 
-$botman->hears('(M|m)i nombre es {name}|(M|m)e llamo {name1}', function (BotMan $bot,$name,$name1) {
+
+$botman->hears('(n|N)(o|O)', function(BotMan $bot){
+      $bot->reply('¡Entendido!, ¿Hay algo más en lo que pueda ayudarte 😁?');
+});
+
+/*$botman->hears('(M|m)i nombre es {name}|(M|m)e llamo {name1}', function (BotMan $bot,$name,$name1) {
 
     if($name != null ){
       $bot->reply('Mucho gusto ' .$name); 
@@ -283,21 +300,38 @@ $botman->hears('(M|m)i nombre es {name}|(M|m)e llamo {name1}', function (BotMan 
     }
 
 
+ }); */
+
+$botman->hears('{name} {tel} {email} | mi nombre es {name2} {tel2} {email2}', function (BotMan $bot,$name, $tel,$email, $name2, $tel2, $email2) {
+
+    if($name != null){
+      $bot->reply('primer if' .$tel2);
+
+      if(strpos($tel, '1') || strpos($tel, '2') || strpos($tel, '3') || strpos($tel, '4') || strpos($tel, '5') || strpos($tel, '6') || strpos($tel, '7') || strpos($tel, '8') || strpos($tel, '9') || strpos($tel, '0')){
+        $bot->reply('segundo if' .$email .$name);
+
+        if($email != null && strpos($email, '@') !== false){ 
+          $bot->reply('tercer if');
+          $bot->reply('Gracias por la información 😊.
+                <br>
+                En un horario de 10:00 am - 19:00pm nuestro asesor se comunicará contigo.');
+        }
+      }
+    }
+    
+    else if($name2 != null){
+      if(strpos($tel2, '1') || strpos($tel2, '2') || strpos($tel2, '3') || strpos($tel2, '4') || strpos($tel2, '5') || strpos($tel2, '6') || strpos($tel2, '7') || strpos($tel2, '8') || strpos($tel2, '9') || strpos($tel2, '0')){
+        if($email != null && strpos($email2, '@') !== false && strpos($email2, '.') !== false){ 
+          $bot->reply('Gracias por la información 😊.
+                <br>
+                En un horario de 10:00 am - 19:00pm nuestro asesor se comunicará contigo.');
+        }
+      }
+    }
+    
  });
 
-$botman->hears('(M|m)i correo es {email}|{email2}', function (BotMan $bot,$email, $email2) {
-
-    if($email != null){
-      $bot->reply('Muy bien! ' .$email);  
-      $bot->reply('¿Podrías proporcionarme tu numero telefonico 😁?');
-    }
-    else if ($email2 != null && strpos($email2, '@') !== false){
-      $bot->reply('Muy bien! ' .$email2); 
-      $bot->reply('¿Podrías proporcionarme tu numero telefonico 😁?');
-    }
- });
-
-$botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,$telefono, $telefono2) {
+/*$botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,$telefono, $telefono2) {
 
     if($telefono != null){
       $bot->reply('Muy bien! ' .$telefono);
@@ -313,8 +347,7 @@ $botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,
     }
     /*
       Envío de correo 
-    */
- });
+ });*/
 
 
 
