@@ -271,7 +271,7 @@ $botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*lo
 });
 
 //Seguimiento para contacto
-$botman->hears('(C|c)omo puedo comunicarme con ustedes.*|(Q|q)uiero agendar una cita|^como (puedo obtener|obtengo) mas informacion$|^(M|m)e (puedes|podrias) (mandar|mandarme) (informes|informaci(o|ó)n)$|.*cotizacion.*|.*cita.*', function(BotMan $bot) {
+$botman->hears('(C|c)omo puedo comunicarme con ustedes.*|^como (puedo obtener|obtengo) mas informacion$|^(M|m)e (puedes|podrias) (mandar|mandarme) (informes|informaci(o|ó)n)$|.*cotizacion.*|.*cita.*', function(BotMan $bot) {
     
     
     $bot->reply('¿Deseas que uno de nuestros asesores se comunique contigo? 😁?');
@@ -302,23 +302,27 @@ $botman->hears('(n|N)(o|O)', function(BotMan $bot){
 
  }); */
 
-$botman->hears('{name} {tel} {email} | mi nombre es {name2} {tel2} {email2}', function (BotMan $bot,$name, $tel,$email, $name2, $tel2, $email2) {
+$botman->hears('{name} {tel} {email}', function (BotMan $bot,$name,$tel,$email) {
 
+    //$bot->reply($name);
     if($name != null){
-      $bot->reply('primer if' .$tel2);
+      //$bot->reply('primer if' .$tel);
 
       if(strpos($tel, '1') || strpos($tel, '2') || strpos($tel, '3') || strpos($tel, '4') || strpos($tel, '5') || strpos($tel, '6') || strpos($tel, '7') || strpos($tel, '8') || strpos($tel, '9') || strpos($tel, '0')){
-        $bot->reply('segundo if' .$email .$name);
-
+        //$bot->reply('segundo if' .$email .$name);
         if($email != null && strpos($email, '@') !== false){ 
-          $bot->reply('tercer if');
+          //$bot->reply('tercer if');
           $bot->reply('Gracias por la información 😊.
                 <br>
                 En un horario de 10:00 am - 19:00pm nuestro asesor se comunicará contigo.');
+                $bot->sendMail($name, $tel, $email);
+
+                
         }
       }
     }
-    
+
+    /*
     else if($name2 != null){
       if(strpos($tel2, '1') || strpos($tel2, '2') || strpos($tel2, '3') || strpos($tel2, '4') || strpos($tel2, '5') || strpos($tel2, '6') || strpos($tel2, '7') || strpos($tel2, '8') || strpos($tel2, '9') || strpos($tel2, '0')){
         if($email != null && strpos($email2, '@') !== false && strpos($email2, '.') !== false){ 
@@ -328,7 +332,7 @@ $botman->hears('{name} {tel} {email} | mi nombre es {name2} {tel2} {email2}', fu
         }
       }
     }
-    
+    */
  });
 
 /*$botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,$telefono, $telefono2) {
@@ -350,47 +354,6 @@ $botman->hears('{name} {tel} {email} | mi nombre es {name2} {tel2} {email2}', fu
  });*/
 
 
-
-
-/*public function sendMail(){
-$destinatario = 'cgutierrez@grupoguia.mx'; 
-$asunto = "Solicitud de contacto"; 
-$cuerpo = ' 
-<html> 
-<head> 
-   <title>Solicitud</title> 
-</head> 
-<body> 
-<h1>Un cliente ha solicitado que lo contacten.</h1> 
-<p> 
-<b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
-</p> 
-</body> 
-</html> 
-'; 
-
-//para el envío en formato HTML 
-$headers = "MIME-Version: 1.0\r\n"; 
-$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-
-//dirección del remitente 
-$headers .= "From: ChatBotIxchel <cgutierrez@grupoguia.mx>\r\n"; 
-
-//dirección de respuesta, si queremos que sea distinta que la del remitente 
-$headers .= "Reply-To: mariano@desarrolloweb.com\r\n"; 
-
-//ruta del mensaje desde origen a destino 
-$headers .= "Return-path: holahola@desarrolloweb.com\r\n"; 
-
-//direcciones que recibián copia 
-$headers .= "Cc: maria@desarrolloweb.com\r\n"; 
-
-//direcciones que recibirán copia oculta 
-$headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
-
-mail($destinatario,$asunto,$cuerpo,$headers)
-}*/
-
 /*function setInterval($f, $milliseconds)
 {
     $seconds=(int)$milliseconds/1000;
@@ -401,8 +364,7 @@ mail($destinatario,$asunto,$cuerpo,$headers)
 
         echo '<script> alert("funciona") </script>';
     }
-} 
-*/
+} */
 
 
 // Start listening
