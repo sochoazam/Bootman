@@ -4,6 +4,7 @@
    use BotMan\BotMan\BotManFactory;
    use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\BotMan\Messages\Incoming\Answer;
+require 'mail.php';
 $config = [
     // Your driver-specific configuration
     // "telegram" => [
@@ -70,7 +71,15 @@ $contI = 0;
         $bot->preguntarNombre();
     }
 }*/
- 
+//Telefono de contacto8
+$botman->hears('.*(n|N)(u|ú)mero.*|.*(t|T)el(é|e)fono.*', function (BotMan $bot) {
+    $bot->reply('Puedes comunicarte al número 3333333333 😊');
+    
+});
+//Cantidad de departamentos
+$botman->hears('.*(c|C)u(a|á)ntos (departamentos|depas|deptos).*|.*(c|C)antidad de (departamentos|depas|deptos).*', function (BotMan $bot) {
+    $bot->reply('142 Departamentos en 2 torres con  2 elevadores por torre 🏢.');
+});
 //Mas ayuda
  $botman->hears('gracias', function (BotMan $bot) {
     $bot->typesAndWaits(5);
@@ -87,20 +96,20 @@ function responseb(BotMan $bot){
     $bot->reply('¿Hay algo más en lo que le pueda ayudar?');
 }
 //Amenidades
-$botman->hears('.*amenidades.*|.*Amenidades.*', function ( BotMan $bot) { 
+$botman->hears('.*(a|A)menidades.*', function ( BotMan $bot) { 
     $bot->reply('Nuestras amenidades son las siguientes:
                 <br>
                 🍃 Roof Garden con vista panorámica.
                 <br>
                 🏋‍♀ Área de Fitness Room
                 <br>
-                🏊‍♂ Alberca, Jacuzzi, Chapoteadero.
+                🏊‍♂ Alberca/Chapoteadero.
                 <br>
                 🏢 2 elevadores por torre.
                 <br>
-                👨‍✈ Seguridad.
+                👨‍✈ Ingreso controlado y seguridad 24 horas.
                 <br>
-                🏬 Está ubicado al lado de una plaza comercial.'); 
+                🏬 Centro Comercial.'); 
 });
 //Buen dia
 $botman->hears('Hola.*|.*Buen dia.*|.*buen dia.*', function (BotMan $bot) {
@@ -146,7 +155,7 @@ $botman->hears('Es todo, hasta luego|Es todo, muchas gracias|Es todo|Adios|Hasta
       Hasta luego 😁.');
 });
 //Horario
-$botman->hears('.*horario de atencion.*|.*horario puedo recibir atencion.*|.*horario pueden atencerme.*|.*horario.*', function (BotMan $bot) {
+$botman->hears('.*(h|H)orario.*|.*(h|H)ora.*|.*(a|A)pertura.*|.*(C|c)ierre.*|.*(c|C)ierra.*|.*(a|A)bre.*|.*(i|I)nicia.*|.*(c|C)omieza.*|.*(t|T)ermina.*|.*(E|e)mpieza.*', function (BotMan $bot) {
     $bot->reply('El horario de atención es: 10:00 am - 19:00 pm en horario corrido de Lunes a Domingo 🙋‍♀.');
 });
 //Informes
@@ -173,16 +182,8 @@ $botman->hears('.*precios.*|.*precio.* |.*costos.*|.*costo.*|cuanto cuesta.*|val
 $botman->hears('.*seguridad.*', function (BotMan $bot) {
     $bot->reply('👩‍✈ Si, cuenta con vigilancia 24/7 además de cámaras de circuito integrado 👨‍✈.');
 });
-
-
-//departamentos muestra 
-$botman->hears('.*depto muestra.*|.*departamento muestra.*|.*muestra.*', function (BotMan $bot) {
-    $bot->reply('De momento no tenemos departamento muestra :/');
-});
-
-
 //Tamaño
-$botman->hears('.*modelos.*|.*tipos de departamento.*|.*dimension.*|.*tamaño.*|.*medida.*|.*cuanto miden.*|.*departamentos.*|informacion (sobre|de) departamentos.*|.*deptos.*', function (BotMan $bot) {
+$botman->hears('.*(M|m)odelos.*|.*(D|d)imensi(o|ó)n.*|.*(T|t)amaño.*|.*(m|M)edida.*|.*miden.*|informaci(o|ó)n (sobre|de) departamento.*|.*superficie.*|.*metros.*|.*mts.*|.*m2.*|.*magnitud.*|.*espacio.*|.*(p|P)rototipo.*', function (BotMan $bot) {
     $bot->reply('Tenemos departamentos desde 64 m2 hasta 92 m2 😉 y las características son:
       <br>
       2 y 3 recamaras con 2 baños.
@@ -214,22 +215,33 @@ $botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*lo
       /*<a href="https://goo.gl/maps/xH9jwyzh9ZgNJwar8" target="_blank">Da clic aquí para conocer la ubicacion</a>*/);
 });
 
-//prototipos 
+//protos
 $botman->hears('.*protos.*|.*prototipos.*', function (BotMan $bot) {
     $bot->reply('Tenemos 8 diferentes prototipos'
       /*<a href="https://goo.gl/maps/xH9jwyzh9ZgNJwar8" target="_blank">Da clic aquí para conocer la ubicacion</a>*/);
 });
 
+
+//departamentos muestra 
+$botman->hears('.*depto muestra.*|.*departamento muestra.*|.*muestra.*', function (BotMan $bot) {
+    $bot->reply('De momento no tenemos departamento muestra :/, pero contamos con showrom en donde puedes ver las
+    caracteristicas del desarrollo, ¿Quieres agendar una cita?');
+});
+
+
 //Seguimiento para contacto
-$botman->hears('(C|c)omo puedo comunicarme con ustedes.*|(Q|q)uiero agendar una cita|^como (puedo obtener|obtengo) mas informacion$', function(BotMan $bot) {
+$botman->hears('(C|c)omo puedo comunicarme con ustedes.*|^como (puedo obtener|obtengo) mas informacion$|^(M|m)e (puedes|podrias) (mandar|mandarme) (informes|informaci(o|ó)n)$|.*cotizacion.*|.*cita.*', function(BotMan $bot) {
     
     
     $bot->reply('¿Deseas que uno de nuestros asesores se comunique contigo? 😁?');
 });
 $botman->hears('(s|S)(í|i)', function(BotMan $bot){
-      $bot->reply('¡Muy bien!, ¿Cuál es tu nombre 😁?');
+      $bot->reply('¡Muy bien!, ¿Puedes enviarme por favor tu Nombre, Número y Correo de contacto 😁?');
 });
-$botman->hears('(M|m)i nombre es {name}|(M|m)e llamo {name1}', function (BotMan $bot,$name,$name1) {
+$botman->hears('(n|N)(o|O)', function(BotMan $bot){
+      $bot->reply('¡Entendido!, ¿Hay algo más en lo que pueda ayudarte 😁?');
+});
+/*$botman->hears('(M|m)i nombre es {name}|(M|m)e llamo {name1}', function (BotMan $bot,$name,$name1) {
     if($name != null ){
       $bot->reply('Mucho gusto ' .$name); 
       $bot->reply('¿Podrías proporcionarme un correo electrónico en donde pueda contactarte 😊?'); 
@@ -238,18 +250,36 @@ $botman->hears('(M|m)i nombre es {name}|(M|m)e llamo {name1}', function (BotMan 
       $bot->reply('Mucho gusto ' .$name1);
       $bot->reply('¿Podrías proporcionarme un correo electrónico en donde pueda contactarte 😊?');
     }
- });
-$botman->hears('(M|m)i correo es {email}|{email2}', function (BotMan $bot,$email, $email2) {
-    if($email != null){
-      $bot->reply('Muy bien! ' .$email);  
-      $bot->reply('¿Podrías proporcionarme tu numero telefonico 😁?');
+ }); */
+$botman->hears('{name} {tel} {email}', function (BotMan $bot,$name,$tel,$email) {
+    //$bot->reply($name);
+    if($name != null){
+      //$bot->reply('primer if' .$tel);
+      if(strpos($tel, '1') || strpos($tel, '2') || strpos($tel, '3') || strpos($tel, '4') || strpos($tel, '5') || strpos($tel, '6') || strpos($tel, '7') || strpos($tel, '8') || strpos($tel, '9') || strpos($tel, '0')){
+        //$bot->reply('segundo if' .$email .$name);
+        if($email != null && strpos($email, '@') !== false){ 
+          //$bot->reply('tercer if');
+          $bot->reply('Gracias por la información 😊.
+                <br>
+                En un horario de 10:00 am - 19:00pm nuestro asesor se comunicará contigo.');
+                $bot->sendMail($name, $tel, $email);
+                
+        }
+      }
     }
-    else if ($email2 != null && strpos($email2, '@') !== false){
-      $bot->reply('Muy bien! ' .$email2); 
-      $bot->reply('¿Podrías proporcionarme tu numero telefonico 😁?');
+    /*
+    else if($name2 != null){
+      if(strpos($tel2, '1') || strpos($tel2, '2') || strpos($tel2, '3') || strpos($tel2, '4') || strpos($tel2, '5') || strpos($tel2, '6') || strpos($tel2, '7') || strpos($tel2, '8') || strpos($tel2, '9') || strpos($tel2, '0')){
+        if($email != null && strpos($email2, '@') !== false && strpos($email2, '.') !== false){ 
+          $bot->reply('Gracias por la información 😊.
+                <br>
+                En un horario de 10:00 am - 19:00pm nuestro asesor se comunicará contigo.');
+        }
+      }
     }
+    */
  });
-$botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,$telefono, $telefono2) {
+/*$botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,$telefono, $telefono2) {
     if($telefono != null){
       $bot->reply('Muy bien! ' .$telefono);
       $bot->reply('Gracias por la información 😊.
@@ -264,39 +294,7 @@ $botman->hears('(M|m)i numero es {telefono}|{telefono2}', function (BotMan $bot,
     }
     /*
       Envío de correo 
-    */
- });
-/*public function sendMail(){
-$destinatario = 'cgutierrez@grupoguia.mx'; 
-$asunto = "Solicitud de contacto"; 
-$cuerpo = ' 
-<html> 
-<head> 
-   <title>Solicitud</title> 
-</head> 
-<body> 
-<h1>Un cliente ha solicitado que lo contacten.</h1> 
-<p> 
-<b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
-</p> 
-</body> 
-</html> 
-'; 
-//para el envío en formato HTML 
-$headers = "MIME-Version: 1.0\r\n"; 
-$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-//dirección del remitente 
-$headers .= "From: ChatBotIxchel <cgutierrez@grupoguia.mx>\r\n"; 
-//dirección de respuesta, si queremos que sea distinta que la del remitente 
-$headers .= "Reply-To: mariano@desarrolloweb.com\r\n"; 
-//ruta del mensaje desde origen a destino 
-$headers .= "Return-path: holahola@desarrolloweb.com\r\n"; 
-//direcciones que recibián copia 
-$headers .= "Cc: maria@desarrolloweb.com\r\n"; 
-//direcciones que recibirán copia oculta 
-$headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
-mail($destinatario,$asunto,$cuerpo,$headers)
-}*/
+ });*/
 /*function setInterval($f, $milliseconds)
 {
     $seconds=(int)$milliseconds/1000;
@@ -306,7 +304,6 @@ mail($destinatario,$asunto,$cuerpo,$headers)
         sleep($seconds);
         echo '<script> alert("funciona") </script>';
     }
-} 
-*/
+} */
 // Start listening
 $botman->listen();
