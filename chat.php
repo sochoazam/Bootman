@@ -4,7 +4,7 @@
    use BotMan\BotMan\BotManFactory;
    use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\BotMan\Messages\Incoming\Answer;
-require 'mail.php';
+
 $config = [
     // Your driver-specific configuration
     // "telegram" => [
@@ -224,8 +224,8 @@ $botman->hears('.*protos.*|.*prototipos.*', function (BotMan $bot) {
 
 //departamentos muestra 
 $botman->hears('.*depto muestra.*|.*departamento muestra.*|.*muestra.*', function (BotMan $bot) {
-    $bot->reply('De momento no tenemos departamento muestra :/, pero contamos con showrom en donde puedes ver las
-    caracteristicas del desarrollo, ¿Quieres agendar una cita?');
+    $bot->reply('De momento no tenemos departamento muestra 😭, pero contamos con showrom en donde puedes ver las
+    caracteristicas del desarrollo, ¿Quieres agendar una cita? 🤩 ');
 });
 
 
