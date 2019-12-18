@@ -8,17 +8,18 @@
 </head>
 <body>
     <h2>chat </h2>
-
    
-
     <script>
         var botmanWidget = {
-            frameEndpoint: 'http://localhost/Bootman/chat.html',
-            introMessage: 'Hola, mi nombre es Ixchel 😀. ¿En que puedo ayudarte?',
+
+            frameEndpoint: 'chat.html',
+            introMessage: 'Hola, mi nombre es GuIA ðŸ˜€. Â¿En que puedo ayudarte?',
+
             chatServer : 'chat.php', 
-            title: 'GuiaBot', 
-            mainColor: '#ff76f4',
-            bubbleBackground: '#ff76f4',
+            title: 'GuIA', 
+            mainColor: '#343434',
+            bubbleBackground: '#ffffff',
+            headerTextColor: '#fff',
             bubbleAvatarUrl: '',
             displayMessageTime: 'Escribe un mensaje',
             aboutText: 'creado por Tech',
