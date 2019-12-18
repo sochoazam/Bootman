@@ -11,8 +11,10 @@
    
     <script>
         var botmanWidget = {
+
             frameEndpoint: 'chat.html',
             introMessage: 'Hola, mi nombre es GuIA ðŸ˜€. Â¿En que puedo ayudarte?',
+
             chatServer : 'chat.php', 
             title: 'GuIA', 
             mainColor: '#343434',
