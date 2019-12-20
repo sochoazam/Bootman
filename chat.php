@@ -101,19 +101,21 @@ $contI = 0;
 
 
 //Telefono de contacto8
-$botman->hears('.*(n|N)(u|ú)mero.*|.*(t|T)el(é|e)fono.*', function (BotMan $bot) {
+$botman->hears('.*(n|N)(u|ú)mero.*|.*(t|T)el(é|e)fono.*|.*(H|h)ablar.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('Puedes comunicarte al número 3333333333 😊');
     
 });
 
 //Cantidad de departamentos
 $botman->hears('.*(c|C)u(a|á)ntos (departamentos|depas|deptos).*|.*(c|C)antidad de (departamentos|depas|deptos).*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('142 Departamentos en 2 torres con  2 elevadores por torre 🏢.');
 });
 
 //Mas ayuda
- $botman->hears('gracias', function (BotMan $bot) {
-    $bot->typesAndWaits(5);
+ $botman->hears('(g|G)racias|(m|M)uchas gracias', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply("¿Hay algo más en lo que le pueda ayudar?");
 });
 
@@ -131,7 +133,8 @@ function responseb(BotMan $bot){
 }
 
 //Amenidades
-$botman->hears('.*(a|A)menidades.*', function ( BotMan $bot) { 
+$botman->hears('.*(a|A)menidad.*', function ( BotMan $bot) {  
+    $bot->typesAndWaits(2);
     $bot->reply('Nuestras amenidades son las siguientes:
                 <br>
                 🍃 Roof Garden con vista panorámica.
@@ -149,25 +152,28 @@ $botman->hears('.*(a|A)menidades.*', function ( BotMan $bot) {
 
 
 //Buen dia
-$botman->hears('Hola.*|.*Buen dia.*|.*buen dia.*', function (BotMan $bot) {
+$botman->hears('(H|h)ola.*|.*(B|b)uen dia.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('¿Como puedo ayudarte 😊?');
-    
 });
 
 //Niveles
-$botman->hears('.*cantidad de pisos.*|.*cantidad de niveles.*|.*cuantos niveles.*|.*cuantos pisos.*', function (BotMan $bot) { 
+$botman->hears('.*cantidad de pisos.*|.*cantidad de niveles.*|.*(N|n)iveles.*|.*(P|p)isos.*', function (BotMan $bot) { 
+    $bot->typesAndWaits(2);
     $bot->reply('🔝 La primera torre tiene 8 niveles.
       <br>
       🔝 La segunda torre tiene 13 niveles.');
 });
 
 //Apartado
-$botman->hears('.*cantidad de apartado.*|.*con cuanto aparto.*|.*cantidad para apartar.*|.*con cuanto puedo apartar.*|.*apartado.*', function (BotMan $bot) { 
+$botman->hears('.*cantidad de apartado.*|.*con cuanto aparto.*|.*cantidad para apartar.*|.*con cuanto puedo apartar.*|.*apartado.*|.*apartar.*', function (BotMan $bot) { 
+    $bot->typesAndWaits(2);
     $bot->reply('El monto de apartado es de 10,000 pesos.');
 });
 
 //Creditos
-$botman->hears('.*aceptan creditos.*|.*cuales creditos aceptan.*|.*puedo pagar con algun credito.*|.*credito.*', function (BotMan $bot) { 
+$botman->hears('.*aceptan creditos.*|.*cuales creditos aceptan.*|.*puedo pagar con algun credito.*|.*(C|c)r(e|é)dito.*', function (BotMan $bot) { 
+    $bot->typesAndWaits(2);
     $bot->reply('Si, aceptamos créditos 💳, y no solo los aceptamos.
       <br> 
       También te ayudamos a realizar el trámite sin costo 🙌. 
@@ -179,11 +185,13 @@ $botman->hears('.*aceptan creditos.*|.*cuales creditos aceptan.*|.*puedo pagar c
 
 //Enganche
 $botman->hears('.*enganche.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('El enganche va desde el 3% hasta el 10% 💰');
 });
 
 //Entrega
 $botman->hears('.*cuando entregan*|.*tiempo estimado de entrega.*|.*cuando entregarian.*|.*me dan el departamento.*|.*entrega.*', function (BotMan $bot) {
+  $bot->typesAndWaits(2);
     $bot->reply('🚧 Las fechas de entrega aproximadas son las siguientes: 
       <br>
       La primera torre en el cuarto trimestre del 2020.
@@ -192,7 +200,8 @@ $botman->hears('.*cuando entregan*|.*tiempo estimado de entrega.*|.*cuando entre
 });
 
 //Final
-$botman->hears('Es todo, hasta luego|Es todo, muchas gracias|Es todo|Adios|Hasta luego|gracias|Gracias', function (BotMan $bot) {
+$botman->hears('(e|E)s todo, hasta luego|(E|e)s todo, muchas gracias|(E|e)s todo|(e|E)s todo, gracias|(a|A)dios|(h|H)asta luego|(b|B)ye|(N|n)ada m(a|á)s', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('Espero haberte ayudado.
       <br>
       Hasta luego 😁.');
@@ -200,31 +209,37 @@ $botman->hears('Es todo, hasta luego|Es todo, muchas gracias|Es todo|Adios|Hasta
 
 //Horario
 $botman->hears('.*(h|H)orario.*|.*(h|H)ora.*|.*(a|A)pertura.*|.*(C|c)ierre.*|.*(c|C)ierra.*|.*(a|A)bre.*|.*(i|I)nicia.*|.*(c|C)omieza.*|.*(t|T)ermina.*|.*(E|e)mpieza.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('El horario de atención es: 10:00 am - 19:00 pm en horario corrido de Lunes a Domingo 🙋‍♀.');
 });
 
 //Informes
-$botman->hears('(^informacion$|^informes$)|^info$|^informacion de lomasur$|^informes de lomasur$|(^En donde (obtengo|obtener) informes$|^Como (obtener|obtengo) informes$).*', function (BotMan $bot) {
+$botman->hears('(^informacion$|^informes$)|^info$|^informacion de lomasur$|^informes de lomasur$|(^En donde (obtengo|obtener) informes$|^Como (obtener|obtengo) informes$|^(m|M)e (puedes|podr(í|i)as) dar (informaci(ó|o)n|informes)).*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('¿Sobre que aspecto requieres informes?');
 });
 
 //Mascotas
-$botman->hears('.*Mascotas.*|.*mascotas.*', function (BotMan $bot) {
+$botman->hears('.*(M|m)ascota.*', function (BotMan $bot) {
+    $bot->typesAndWaits(1);
     $bot->reply('🐱 Si, se aceptan mascotas 🐶.');
 });
 
 //Más ayuda
 $botman->hears('.*Muy bien.*|.*excelente.*|.*muy bien.*|.*(g|G)enial.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('¿Hay algo más en lo que pueda ayudarte 😁?');
 });
 
 //Planes de financiamiento
-$botman->hears('.*planes de financiamiento.*|.*plan de financiamiento.*', function (BotMan $bot) {
+$botman->hears('.*(F|f)inanciamiento.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('Si, tenemos financiamiento hasta de 12 meses 🤩.');
 });
 
 //Precios
-$botman->hears('.*precios.*|.*precio.* |.*costos.*|.*costo.*|cuanto cuesta.*', function (BotMan $bot) {
+$botman->hears('.*precios.*|.*precio.* |.*costos.*|.*costo.*|cuanto cuesta.*|valor.*|valor.*|costo.*|valen.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('Nuestro precio de lista es desde 1,710,000, sin embargo, tenemos descuentos exclusivos de preventa 🤩.');
 });
 
@@ -235,7 +250,8 @@ $botman->hears('.*seguridad.*', function (BotMan $bot) {
 });
 
 //Tamaño
-$botman->hears('.*(M|m)odelos.*|.*(D|d)imensi(o|ó)n.*|.*(T|t)amaño.*|.*(m|M)edida.*|.*miden.*|informaci(o|ó)n (sobre|de) departamento.*|.*superficie.*|.*metros.*|.*mts.*|.*m2.*|.*magnitud.*|.*espacio.*|.*(p|P)rototipo.*', function (BotMan $bot) {
+$botman->hears('.*(M|m)odelos.*|.*(D|d)imensi(o|ó)n.*|.*(T|t)amaño.*|.*(m|M)edida.*|.*miden.*|informaci(o|ó)n (sobre|de) departamento.*|.*superficie.*|.*metros.*|.*mts.*|.*m2.*|.*magnitud.*|.*espacio.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('Tenemos departamentos desde 64 m2 hasta 92 m2 😉 y las características son:
       <br>
       2 y 3 recamaras con 2 baños.
@@ -259,10 +275,9 @@ $botman->hears('.*(M|m)odelos.*|.*(D|d)imensi(o|ó)n.*|.*(T|t)amaño.*|.*(m|M)ed
       <a href="https://grupoguia.mx/lomasur/#link-kvqs5v448xr" target="_blank">Da clic aquí para conocer todos nuestros modelos</a>');
 });
 
-
-
 //Ubicacion
-$botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*localizados.*|(E|e)n donde estan.*|.*ubicados.*|.*ubican.*', function (BotMan $bot) {
+$botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*localizados.*|(E|e)n donde estan.*|.*ubicados.*|.*ubican.*|.*(E|e)n donde se encuentran.*|.*localiza.*|.*ubica.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
     $bot->reply('Estamos ubicados en: Av. Colon  #4965, frente a la terminal de la linea 1 sur del tren ligero 🚟. A 900 mts del ITESO.
       <br>
       <br>
@@ -270,21 +285,36 @@ $botman->hears('.*ubicaci(ó|o)n.*|.*Ubicaci(ó|o)n.*|.*localizaci(ó|o)n.*|.*lo
       /*<a href="https://goo.gl/maps/xH9jwyzh9ZgNJwar8" target="_blank">Da clic aquí para conocer la ubicacion</a>*/);
 });
 
+//protos
+$botman->hears('.*protos.*|.*prototipos.*', function (BotMan $bot) {
+    $bot->typesAndWaits(1);
+    $bot->reply('Tenemos 8 diferentes prototipos');
+});
+
+//departamentos muestra 
+$botman->hears('.*depto muestra.*|.*departamento muestra.*|.*muestra.*', function (BotMan $bot) {
+    $bot->typesAndWaits(2);
+    $bot->reply('De momento no tenemos departamento muestra 😭, pero contamos con showrom en donde puedes ver las
+    caracteristicas del desarrollo, ¿Quieres agendar una cita? 🤩 ');
+});
+
+
 //Seguimiento para contacto
 $botman->hears('(C|c)omo puedo comunicarme con ustedes.*|^como (puedo obtener|obtengo) mas informacion$|^(M|m)e (puedes|podrias) (mandar|mandarme) (informes|informaci(o|ó)n)$|.*cotizacion.*|.*cita.*', function(BotMan $bot) {
-    
-    
+    $bot->typesAndWaits(2);
     $bot->reply('¿Deseas que uno de nuestros asesores se comunique contigo? 😁?');
 
 });
 
 $botman->hears('(s|S)(í|i)', function(BotMan $bot){
+      $bot->typesAndWaits(2);
       $bot->reply('¡Muy bien!, ¿Puedes enviarme por favor tu Nombre, Número y Correo de contacto 😁?');
 });
 
 
 
 $botman->hears('(n|N)(o|O)', function(BotMan $bot){
+      $bot->typesAndWaits(2);
       $bot->reply('¡Entendido!, ¿Hay algo más en lo que pueda ayudarte 😁?');
 });
 
@@ -312,6 +342,7 @@ $botman->hears('{name} {tel} {email}', function (BotMan $bot,$name,$tel,$email) 
         //$bot->reply('segundo if' .$email .$name);
         if($email != null && strpos($email, '@') !== false){ 
           //$bot->reply('tercer if');
+          $bot->typesAndWaits(2);
           $bot->reply('Gracias por la información 😊.
                 <br>
                 En un horario de 10:00 am - 19:00pm nuestro asesor se comunicará contigo.');
@@ -369,5 +400,3 @@ $botman->hears('{name} {tel} {email}', function (BotMan $bot,$name,$tel,$email) 
 
 // Start listening
 $botman->listen();
-
-
